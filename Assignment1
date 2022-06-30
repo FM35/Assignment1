@@ -1,0 +1,47 @@
+
+
+
+//Question1
+function add(x: number,y:number,z:number):number{
+    const sum =x+y+z
+    return sum;
+}
+var add8 = add.bind(this, 3, 5)
+console.log(add8(10))
+
+module Main exposing (main)
+import Html
+add: Int -> Int -> Int -> Int
+add x  y  z =
+  x + y + z
+add8 =
+    add 5 3
+result =
+    add8 3
+main =
+  Html.text (String.fromInt result)
+
+
+
+//Question 2
+Left to right
+console.log(R.compose(Math.abs, R.subtract1), R.add(5))(-16))
+
+//Right to left
+console.log(R.pipe(R.add(8))(-24) , R.subtract1), Math.abs,)
+
+
+
+//Question 3
+type UnaryFunction<A, B> = (_3: A) => B;
+type BinaryFunction<A, B, C> = (_1: A, _2: B) => C;
+const partialApplication = <A, B, C>(
+  g: BinaryFunction<A, B, C>,
+  a: A
+): UnaryFunction<B, C> => {
+    return  (_3: B):C => {return g(a,_3)};
+}
+const lowerArity = partialApplication<number, number, number>(
+                      (x: number,y: number) => {return x + y;},
+                      5
+                  )
